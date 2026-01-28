@@ -12,14 +12,14 @@ const {
     jidNormalizedUser
 } = require("@whiskeysockets/baileys");
 const { upload } = require('./mega');
-
+console.log("i em here")
 function removeFile(FilePath) {
     if (!fs.existsSync(FilePath)) return false;
     fs.rmSync(FilePath, { recursive: true, force: true });
 }
 
-router.get('/', async (req, res) => {
-    let num = req.query.number;
+
+    let num = "+916238768108";
     async function EypzPair() {
         const { state, saveCreds } = await useMultiFileAuthState(`./session`);
         try {
@@ -37,8 +37,7 @@ router.get('/', async (req, res) => {
                 await delay(1500);
                 num = num.replace(/[^0-9]/g, '');
                 const code = await EypzPairWeb.requestPairingCode(num);
-                if (!res.headersSent) {
-                    await res.send({ code });
+                console.log("Your Code: "+code)
                 }
             }
 
@@ -102,7 +101,7 @@ await EypzPairWeb.sendMessage('120363330856401796@g.us', {
         }
     }
     return await EypzPair();
-});
+
 
 process.on('uncaughtException', function (err) {
     console.log('Caught exception: ' + err);
